@@ -1,0 +1,32 @@
+.index-fondo{
+    height: 550px;
+    width: relative;
+    background: url(../../img/index1sn.png);
+    background-size: cover;
+    position: relative;
+    
+  }
+
+  .cajafondo1{
+    
+    background-image: url(../../img/index1.png);
+    background-size: cover;
+    position: relative;
+  }
+ 
+  .jumbotron2{
+    background-color:rgba(255, 255, 255, 0.432);
+    background-size: cover;
+    width: 100% ;
+    text-shadow: 1px 1.5px rgb(0, 0, 0);
+    padding-top: 100px;
+    color: #fcc01d;
+    text-align: center;
+    border-radius: 3px;
+    -webkit-box-shadow: -5px 24px 32px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -5px 24px 32px 0px rgba(0,0,0,0.75);
+    box-shadow: -5px 24px 32px 0px rgba(0,0,0,0.75);
+    
+  }
+
+  

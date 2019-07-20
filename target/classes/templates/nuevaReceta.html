@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>ClinicPlus Recetas</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <th:block th:replace="fragments/navbar :: navbar"></th:block>
+    <div class="row text-center">
+
+        <div class="tablas col-3 text-center">
+            <form action="#" th:action="@{recetas/nueva}" th:object="${receta}" method="post">
+                <td th:each="item, itemStat : *{itemRecetaList}">
+
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Ingresar Cantidad</label>
+                        <input th:field="*{itemRecetaList[__${itemStat.index}__].cantidad}" type="text"
+                            class="form-control" id="formGroupExampleInput" placeholder="Cantidad">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Ingresar Medicamento</label>
+                        <input th:field="*{itemRecetaList[__${itemStat.index}__].medicamento}" type="text"
+                            class="form-control" id="formGroupExampleInput2" placeholder="Medicamento">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                </td>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

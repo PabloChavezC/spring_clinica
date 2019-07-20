@@ -1,0 +1,15 @@
+com\lp2\prueba2\clinica\dao\CredencialDAO.class
+com\lp2\prueba2\clinica\ClinicaApplication.class
+com\lp2\prueba2\clinica\dao\ItemRecetaDAO.class
+com\lp2\prueba2\clinica\modelo\Paciente.class
+com\lp2\prueba2\clinica\dao\PacienteDAO.class
+com\lp2\prueba2\clinica\controlador\RecetaController.class
+com\lp2\prueba2\clinica\modelo\Credencial.class
+com\lp2\prueba2\clinica\controlador\CredencialController.class
+com\lp2\prueba2\clinica\modelo\Medico.class
+com\lp2\prueba2\clinica\controlador\PacienteController.class
+com\lp2\prueba2\clinica\dao\MedicoDAO.class
+com\lp2\prueba2\clinica\controlador\MedicoController.class
+com\lp2\prueba2\clinica\modelo\Receta.class
+com\lp2\prueba2\clinica\modelo\ItemReceta.class
+com\lp2\prueba2\clinica\dao\RecetaDAO.class

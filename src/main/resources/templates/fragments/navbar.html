@@ -1,0 +1,45 @@
+<th:block th:fragment="navbar">
+    
+<nav class="navbar navbar-light navbar-expand-md" style="background-color: rgb(30, 191, 255)">
+        <div class="container-fluid">
+          <a class="navbar-brand float-right" href="#"><strong><em>ClinicPlus</em></strong></a>
+          <button class="navbar-toggler float-right" data-toggle="collapse" data-target="#navcol-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse text-right border rounded float-right" id="navcol-1" style="background-color: #b1b1b1;">
+            <ul class="nav navbar-nav text-center">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" href="/" style="color: #ffffff;">Inicio</a>
+              </li>
+            </ul>
+
+            <!-- <ul class="navbar-nav mt-2 mr-2 mt-lg-0">
+                                   
+                <th:block th:if="${session.medicoLogueado==null}">
+                        <li class="nav-item"> 
+                                <a class="nav-link" href="/login" >Ingresar</a>
+                        </li>
+                </th:block>
+                
+                 <th:block th:unless="$session.medicoLogueado==null}">
+                        <li class="nav-item dropdown float-right"> 
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" text="'Logueado como: '+${session.medicoLogueado.getNombres()}">Dropdown</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown2">
+                                    
+                                    <form action="logout" method="post">
+                                            <input class="dropdown-item" type="submit" value="Terminar Sesión">
+                                    </form>
+                                </div>          
+                        </li>
+                </th:block>     
+                
+                
+            </ul> -->
+
+
+
+          </div>
+        </div>
+      </nav> 
+    </th:block>
