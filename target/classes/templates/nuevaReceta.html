@@ -20,17 +20,17 @@
 
         <div class="tablas col-3 text-center">
             <form action="#" th:action="@{recetas/nueva}" th:object="${receta}" method="post">
-                <td th:each="item, itemStat : *{itemRecetaList}">
+                <td th:each= "item : ${receta.itemRecetaList}">
 
 
                     <div class="form-group">
                         <label for="formGroupExampleInput">Ingresar Cantidad</label>
-                        <input th:field="*{itemRecetaList[__${itemStat.index}__].cantidad}" type="text"
+                        <input th:field="${item.cantidad}" type="text"
                             class="form-control" id="formGroupExampleInput" placeholder="Cantidad">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Ingresar Medicamento</label>
-                        <input th:field="*{itemRecetaList[__${itemStat.index}__].medicamento}" type="text"
+                        <input th:field="*${item.medicamento}" type="text"
                             class="form-control" id="formGroupExampleInput2" placeholder="Medicamento">
                     </div>
 
