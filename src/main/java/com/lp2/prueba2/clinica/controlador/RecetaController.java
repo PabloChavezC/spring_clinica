@@ -5,6 +5,7 @@
  */
 package com.lp2.prueba2.clinica.controlador;
 
+import com.lp2.prueba2.clinica.dao.ItemRecetaDAO;
 import com.lp2.prueba2.clinica.dao.MedicoDAO;
 import com.lp2.prueba2.clinica.dao.PacienteDAO;
 import com.lp2.prueba2.clinica.dao.RecetaDAO;
@@ -40,6 +41,9 @@ public class RecetaController {
     @Autowired
     PacienteDAO pDao;
  
+    @Autowired
+    ItemRecetaDAO iDao;
+    
     @GetMapping("pacientes/{idPaciente}/recetas")
     public String verRecetasPaciente(
             HttpServletRequest request,
@@ -114,13 +118,15 @@ public class RecetaController {
             r.setIdPaciente(p);
             r.setIdMedico(m);
             
-            r.setItemRecetaList(new ArrayList<ItemReceta>());
+            r.setItemRecetaList(new ArrayList<>());
 
             for (int i = 0; i <= 4; i++) {
-                r.getItemRecetaList().add(new ItemReceta());
+                ItemReceta item = new ItemReceta();
+                r.getItemRecetaList().add(item);
+                //item.setIdReceta(r);
             }
 
-            model.addAttribute("receta", new Receta());
+            model.addAttribute("receta", r);
             return "nuevaReceta";
         }
         
@@ -149,8 +155,23 @@ public class RecetaController {
             r.setIdPaciente(p);
             r.setFecha(new Date());
             
-            rDao.save(r);
+           //iDao.saveAll(r.getItemRecetaList());
+           
+                     
+            List<ItemReceta> items = r.getItemRecetaList();
             
+           
+            r.setItemRecetaList(null);
+            
+             r = rDao.save(r);
+             for (int i = 0; i < items.size(); i++) {
+                ItemReceta get = items.get(i);
+                
+                get.setIdReceta(r);
+            }
+             r.setItemRecetaList(items);
+             rDao.save(r);
+             
             return "redirect:/pacientes/"+idPaciente+"/recetas";
         }
         

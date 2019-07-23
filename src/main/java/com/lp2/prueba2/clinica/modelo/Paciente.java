@@ -129,7 +129,7 @@ public class Paciente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.lp2.prueba2.clinica.modelo.Paciente[ id=" + id + " ]";
+        return ""+nombre+" "+apellido+ " con su [ id=" + id + " ]";
     }
     
 }

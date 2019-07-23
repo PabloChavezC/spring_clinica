@@ -24,15 +24,17 @@
   </div>
   <div class="row text-center">
     <div class="col-6 center text-center">
-      <form th:action="@{recetas/nueva}" method="GET">
+      <form th:action="@{'/pacientes/'+${idPaciente}+'/recetas/nueva'}" method="GET">
         <button type="submit" class="btn btn-primary ">Agregar Receta</button>
       </form>
 
     </div>
-    <div class="col-6">
+    <div class="col-6 center text-center">
 
-      <a href="/pacientes/ver" type="button" class="btn btn-warning">Volver</a>
-    </div>
+      <form th:action="@{/pacientes/volver2}" method="GET">
+          <button type="submit" class="btn btn-warning ">Volver</button>
+  </form>
+  </div>
   </div>
   <br>
   <div>
@@ -42,8 +44,8 @@
           <th scope="col">#</th>
           <th scope="col">descripcion</th>
           <th scope="col">fecha</th>
-          <th scope="col">id Medico</th>
-          <th scope="col">id Paciente</th>
+          <th scope="col"> Medico</th>
+          <th scope="col"> Paciente</th>
         </tr>
       </thead>
       <tbody>

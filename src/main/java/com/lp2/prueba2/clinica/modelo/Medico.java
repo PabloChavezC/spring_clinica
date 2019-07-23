@@ -143,7 +143,7 @@ public class Medico implements Serializable {
 
     @Override
     public String toString() {
-        return "com.lp2.prueba2.clinica.modelo.Medico[ id=" + id + " ]";
+        return ""+nombres+" "+apellidos+ " con su [ id=" + id + " ]";
     }
     
 }

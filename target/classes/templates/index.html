@@ -46,7 +46,7 @@
         <th:block th:unless="${(session.medicoLogueado==null)}">
             <div class="jumbotron2 text-center">
                 <h1 class="display-6">Bienvenido Medico </h1>
-                <!--<a th:text="'Bienvenido Dr '+${session.medico.getNombres()}"></a>-->
+                <h1 th:text="'Bienvenido Dr '+${session.medicoLogueado.getRut()}"></h1>
                 <div class="row text-center">
                     <div class="col-6 text-center">
                         <form th:action="@{pacientes/ver}" method="GET">

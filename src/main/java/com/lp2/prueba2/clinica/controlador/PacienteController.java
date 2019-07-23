@@ -105,6 +105,110 @@ public class PacienteController {
     }
 
     //MODIFICACION PARA EDITAR Y ELIMINAR NO CONTEMPLADO EN LA PROPUESTA
+    @GetMapping("pacientes/{id}/editar")
+    public String mostrar(
+            @PathVariable("id") Integer id,
+            Model model,
+            HttpServletRequest request
+    ) {
+
+        Credencial c = (Credencial) request.getSession().getAttribute("medicoLogueado");
+
+        if (c == null) {
+
+            return "redirect:/login";
+        }
+
+        model.addAttribute("pacientes", pDao.findById(id).get());
+        return "editarPaciente";
+    }
+
+    @PostMapping("pacientes/{id}/editar")
+    public String nuevoPacienteEditado(
+            @PathVariable("id") Integer id,
+            @ModelAttribute Paciente p,
+            HttpServletRequest request
+    ) {
+
+        Credencial c = (Credencial) request.getSession().getAttribute("medicoLogueado");
+
+        if (c == null) {
+
+            return "redirect:/login";
+        } else {
+
+            int idMedico = c.getIdMedico().getId();
+            Medico medico = mDao.findById(idMedico);
+
+            medico.getPacienteList().add(p);
+
+            pDao.save(p);
+            mDao.save(medico);
+
+            return "redirect:/pacientes/ver";
+        }
+    }
+        
+    @PostMapping("eliminarPaciente/{id}")
+
+    public String eliminarPaciente(
+            HttpServletRequest request,
+            @PathVariable("id") int Paciente) throws IOException {
+        
+        Credencial c = (Credencial) request.getSession().getAttribute("medicoLogueado");
+
+        if (c == null) {
+
+            return "redirect:/login";
+        } else {
+
+            int idMedico = c.getIdMedico().getId();
+            Medico medico = mDao.findById(idMedico);
+        
+        
+            medico.getPacienteList().get(Paciente);
+        this.pDao.deleteById(Paciente);
+        
+        return "redirect:/verPacientes";
+    }
+    }
+    
+    @GetMapping("pacientes/volver")
+    public String index2(){
+        
+        return "redirect:/";
+    }
+    
+    @GetMapping("pacientes/volver2")
+    public String index3(){
+        
+        return "redirect:/pacientes/ver";
+    }
+    
+   
+    }
+    
+    /*@GetMapping("pacientes/{id}/editar")
+    public String mostrarForm(
+        @PathVariable("idPaciente") int idPaciente,
+            Model model,
+            HttpServletRequest request
+    ) {
+
+        Credencial c = (Credencial) request.getSession().getAttribute("medicoLogueado");
+
+        if (c == null) {
+
+            return "redirect:/login";
+        } else {
+            Paciente p = pDao.findById(idPaciente);
+            p.
+            model.addAttribute("paciente", new Paciente());
+
+            return "editarPacientes";
+        }
+    } /*
+    
     @PostMapping("pacientes/editar")
     public void editarPacientes(@ModelAttribute Paciente paciente, HttpServletResponse response, @PathVariable("id") Integer id) throws IOException {
         Paciente pacienteBD = pDao.findById(id.intValue());
@@ -125,5 +229,4 @@ public class PacienteController {
         pDao.delete(p);
         
         return "redirect:/pacientes/ver";
-    }
-}
+    }*/

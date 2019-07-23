@@ -16,66 +16,71 @@
 
 <body style="background-image: url(../../img/index1.png)">
     <th:block th:replace="fragments/navbar :: navbar"></th:block>
-    
-        <div class="row ">
-            <div class="col-6 text-center">
-                
-                <h4 class="display-5">Aqui estan los pacientes que usted a atendido</h4>
-            </div>
-            
-            <div class="col">
-                <form th:action="@{/pacientes/nuevo}" method="GET">
-                    <button type="submit" class="btn btn-primary btn-block">Agregar Pacientes</button>
-                </form>
-                <form th:action="@{/recetas/emitidas}" method="GET">
-                    <button type="submit" class="btn btn-success btn-block">Ver Recetas emitidas por el medico</button>
-                </form>
-            </div>
-            <div class="col text-center">
 
-                    <a href="/" type="button" class="btn btn-warning">Volver</a>
-                </div>
+    <div class="row ">
+        <div class="col-6 text-center">
+
+            <h4 class="display-5 text-center">Aqui estan los pacientes que usted a atendido</h4>
         </div>
 
-        <br>
-        <div class="container center">
-            <div class="col-6 justify-content-center">
-                <table class="table table-hover" style="background-color: rgba(135, 207, 235, 0.788)">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Direccion</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="paciente :${pacientes}">
-                            <th scope="row" th:text="*{paciente.id}"></th>
-                            <td th:text="*{paciente.nombre}"></td>
-                            <td th:text="*{paciente.apellido}"></td>
-                            <td th:text="*{paciente.direccion}"></td>
-                            <td><a type="button" th:href="@{editarPaciente/}" class="btn btn-primary">Editar</a></td>
-                            <form th:action="@{'eliminarPacientes/'+${paciente.id}}" method="POST">
-                                <td><button type="submit" onclick="return confirm('¿Eliminar?')"
-                                        class="btn btn-danger">Eliminar</td>
-
-                            </form>
-                            <form th:action="@{'/pacientes/'+${paciente.id}+'/recetas'}" method="GET">
-                                <td><button type="submit" class="btn btn-success">Historial Recetas</td>
-
-                            </form>
-
-
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
+        <div class="col">
+            <form th:action="@{/pacientes/nuevo}" method="GET">
+                <button type="submit" class="btn btn-primary btn-block">Agregar Pacientes</button>
+            </form>
+            <form th:action="@{/recetas/emitidas}" method="GET">
+                <button type="submit" class="btn btn-success btn-block">Ver Recetas emitidas por el medico</button>
+            </form>
         </div>
-    
+        <div class="col-3 text-center">
+            <form th:action="@{/pacientes/volver}" method="GET">
+                <button type="submit" class="btn btn-warning btn-block">Volver</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <div class="container center">
+        <div class="col justify-content-center">
+            <table class="table table-hover" style="background-color: rgba(135, 207, 235, 0.788)">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Direccion</th>
+                        <th scope="col">Recetas</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="paciente :${pacientes}">
+                        <th scope="row" th:text="*{paciente.id}"></th>
+                        <td th:text="*{paciente.nombre}"></td>
+                        <td th:text="*{paciente.apellido}"></td>
+                        <td th:text="*{paciente.direccion}"></td>
+                        <!--
+                        <form th:action="@{'/pacientes/'+${paciente.id}+'/editar'}" method="GET">
+                            <td><button type="submit" class="btn btn-primary">Editar</button></td>
+                        </form>
+                        <form th:action="@{'/eliminarPaciente/'+${paciente.id}}" method="POST">
+                            <td><button type="submit" onclick="return confirm('¿Eliminar?')"
+                                    class="btn btn-danger">Eliminar</td>
+
+                        </form>
+                    -->
+                        <form th:action="@{'/pacientes/'+${paciente.id}+'/recetas'}" method="GET">
+                            <td><button type="submit" class="btn btn-success">Historial Recetas</td>
+
+                        </form>
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
