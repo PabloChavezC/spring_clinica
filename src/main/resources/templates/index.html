@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Index ClinicPlus</title>
+    <title href="/">Index ClinicPlus</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,8 +45,8 @@
 
         <th:block th:unless="${(session.medicoLogueado==null)}">
             <div class="jumbotron2 text-center">
-                <h1 class="display-6">Bienvenido Medico </h1>
-                <h1 th:text="'Bienvenido Dr '+${session.medicoLogueado.getRut()}"></h1>
+                <h1 class="display-6">Bienvenido al Servicio </h1>
+                <h1 th:text="'Credencial del Dr. n° '+${session.medicoLogueado.getRut()}"></h1>
                 <div class="row text-center">
                     <div class="col-6 text-center">
                         <form th:action="@{pacientes/ver}" method="GET">

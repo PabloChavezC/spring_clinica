@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>ClinicPlus Pacientes</title>
+    <title href="/">ClinicPlus Pacientes</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,7 +58,7 @@
                         <td th:text="*{paciente.nombre}"></td>
                         <td th:text="*{paciente.apellido}"></td>
                         <td th:text="*{paciente.direccion}"></td>
-                        <!--
+                        
                         <form th:action="@{'/pacientes/'+${paciente.id}+'/editar'}" method="GET">
                             <td><button type="submit" class="btn btn-primary">Editar</button></td>
                         </form>
@@ -67,7 +67,7 @@
                                     class="btn btn-danger">Eliminar</td>
 
                         </form>
-                    -->
+                    
                         <form th:action="@{'/pacientes/'+${paciente.id}+'/recetas'}" method="GET">
                             <td><button type="submit" class="btn btn-success">Historial Recetas</td>
 

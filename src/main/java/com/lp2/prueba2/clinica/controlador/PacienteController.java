@@ -119,7 +119,7 @@ public class PacienteController {
             return "redirect:/login";
         }
 
-        model.addAttribute("pacientes", pDao.findById(id).get());
+        model.addAttribute("pacientes", pDao.findById(id));
         return "editarPaciente";
     }
 
@@ -140,7 +140,7 @@ public class PacienteController {
             int idMedico = c.getIdMedico().getId();
             Medico medico = mDao.findById(idMedico);
 
-            medico.getPacienteList().add(p);
+            medico.getPacienteList().set(id, p);
 
             pDao.save(p);
             mDao.save(medico);
@@ -167,7 +167,8 @@ public class PacienteController {
         
         
             medico.getPacienteList().get(Paciente);
-        this.pDao.deleteById(Paciente);
+            this.pDao.deleteById(Paciente);
+        
         
         return "redirect:/verPacientes";
     }

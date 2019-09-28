@@ -113,10 +113,13 @@ public class RecetaController {
 
             Paciente p = pDao.findById(idPaciente);
             Medico m = mDao.findById(idMedico);
+            String descripcion = null;
 
             Receta r = new Receta();
             r.setIdPaciente(p);
             r.setIdMedico(m);
+           
+            r.setDescripcion(descripcion);
             
             r.setItemRecetaList(new ArrayList<>());
 
@@ -150,10 +153,13 @@ public class RecetaController {
             
             Paciente p = pDao.findById(idPaciente);
             Medico m = mDao.findById(idMedico);
+            String descripcion = r.getDescripcion();
             
             r.setIdMedico(m);
             r.setIdPaciente(p);
             r.setFecha(new Date());
+            r.setDescripcion(descripcion);
+            
             
            //iDao.saveAll(r.getItemRecetaList());
            

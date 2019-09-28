@@ -18,16 +18,23 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url(../../img/index1.png)">
+<body style="background-color: rgba(135, 207, 235, 0.788)">
 
     <th:block th:replace="fragments/navbar :: navbar"></th:block>
-    <form action="#" th:action="@{'/pacientes/'+${idPaciente}+'/recetas/nueva'}" th:object="${receta}" method="post">
-
+    <form class="col text-center" action="#" th:action="@{'/pacientes/'+${idPaciente}+'/recetas/nueva'}"
+        th:object="${receta}" method="post">
+        <h5 class="col-9 text-center">Ingrese la Descripción de la Receta</h5>
         <table class="table table-hover" style="background-color: rgba(200, 235, 135, 0.582)">
+            <br>
+
+
+            <input th:field="*{descripcion}" type="text" class="form-control" id="formGroupExampleInput"
+                placeholder="Descripción">
+
             <thead>
                 <tr>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Medicamento</th>
+                    <th scope="col">Ingresar Cantidad</th>
+                    <th scope="col">Ingresar Medicamento</th>
                 </tr>
             </thead>
 
@@ -36,17 +43,31 @@
                 <th:block>
                     <tr th:each="item, itemStat : *{itemRecetaList}">
 
-                        <td><input th:field="*{itemRecetaList[__${itemStat.index}__].cantidad}" /></td>
-                        <td><input th:field="*{itemRecetaList[__${itemStat.index}__].medicamento}" /></td>
+                        <td>
+                            <div class="form-group">
+
+                                <input th:field="*{itemRecetaList[__${itemStat.index}__].cantidad}" type="text"
+                                    class="form-control" id="formGroupExampleInput" placeholder="Cantidad">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+
+                                <input th:field="*{itemRecetaList[__${itemStat.index}__].medicamento}" type="text"
+                                    class="form-control" id="formGroupExampleInput" placeholder="Medicamento">
+                            </div>
+                        </td>
                     </tr>
 
                 </th:block>
             </tbody>
 
         </table>
-        <input type="submit" id="submitButton" th:value="Guardar">
+        <button type="submit" class="btn btn-success">Guardar Receta</button>
+        <br>
 
     </form>
+    <br>
 </body>
 
 </html>

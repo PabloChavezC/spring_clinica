@@ -31,7 +31,7 @@
             
           <div class="form-container">
               <div class="image-holder"></div>
-          <form action="#" th:action="@{'/pacientes/'+${paciente.id}+'/editar'}" th:object="${paciente}" method="POST">
+          <form th:action="@{'/pacientes/'+${paciente.id}+'/editar'}" th:object="${paciente}" method="POST">
               <div class="form-group">
                   <label for="formGroupExampleInput">Ingresar Nombre</label>
                   <input th:field="*{nombre}" type="text" class="form-control" id="formGroupExampleInput"
